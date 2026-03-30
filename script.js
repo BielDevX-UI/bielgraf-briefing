@@ -77,6 +77,17 @@ function getChecks(groupId) {
 }
 
 // ══════════════════════════════════════
+// DESTACAR CAMPO COM ERRO
+// ══════════════════════════════════════
+function marcarErro(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('campo-erro');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.addEventListener('input', () => el.classList.remove('campo-erro'), { once: true });
+}
+
+// ══════════════════════════════════════
 // COLETA DE DADOS
 // ══════════════════════════════════════
 function coletarDados(tipo) {
@@ -290,16 +301,50 @@ function gerarHTML(tipo, d, hora) {
 }
 
 // ══════════════════════════════════════
+// MAPA DE IDs DOS CAMPOS DE NOME (por tipo)
+// ══════════════════════════════════════
+const CAMPO_NOME = {
+  thumbnail: 'thumbnail_cliente',
+  logo:      'logo_cliente',
+  flyer:     'flyer_cliente',
+  banner:    'banner_cliente',
+  story:     'story_cliente',
+  social:    'social_cliente',
+  card:      'card_cliente',
+  video:     'video_cliente',
+};
+
+const CAMPO_TEL = {
+  thumbnail: 'thumbnail_tel',
+  logo:      'logo_tel',
+  flyer:     'flyer_tel',
+  banner:    'banner_tel',
+  story:     'story_tel',
+  social:    'social_tel',
+  card:      'card_tel',
+  video:     'video_tel',
+};
+
+// ══════════════════════════════════════
 // ENVIAR BRIEFING
 // ══════════════════════════════════════
 async function enviarBriefing(tipo) {
   const d = coletarDados(tipo);
 
+  // ── Validação: nome do cliente ──
   if (!d.cliente) {
-    showToast('⚠️ Campo obrigatório', 'Informe o nome do cliente antes de enviar.', '#e63946'); return;
+    const campoId = CAMPO_NOME[tipo] || (tipo + '_cliente');
+    marcarErro(campoId);
+    showToast('Campo obrigatório', 'Informe o nome do cliente antes de enviar.', 'erro');
+    return;
   }
+
+  // ── Validação: WhatsApp ──
   if (!d.tel) {
-    showToast('⚠️ Campo obrigatório', 'Informe o WhatsApp do cliente.', '#e63946'); return;
+    const campoId = CAMPO_TEL[tipo] || (tipo + '_tel');
+    marcarErro(campoId);
+    showToast('Campo obrigatório', 'Informe o WhatsApp do cliente antes de enviar.', 'erro');
+    return;
   }
 
   const btn = document.querySelector(`#panel-${tipo} .btn-submit`);
@@ -311,7 +356,7 @@ async function enviarBriefing(tipo) {
   });
 
   if (!window.emailjs) {
-    showToast('❌ EmailJS não carregado', 'Verifique conexão e tente novamente.', '#e63946');
+    showToast('EmailJS não carregado', 'Verifique conexão e tente novamente.', 'erro');
     btn.disabled = false; btn.classList.remove('loading'); return;
   }
 
@@ -336,7 +381,7 @@ async function enviarBriefing(tipo) {
       whatsapp_raw: (d.tel || '').replace(/\D/g, '')
     });
 
-    showToast('✓ E-mail enviado', 'Briefing enviado para ' + DEST + '.', '#2d6a4f');
+    showToast('Briefing enviado!', 'Recebido em ' + DEST + ' com sucesso.', 'sucesso');
     const btnText = btn.querySelector('.btn-text');
     if (btnText) {
       btnText.textContent = '✓ Enviado!';
@@ -344,7 +389,7 @@ async function enviarBriefing(tipo) {
     }
   } catch (err) {
     console.error('EmailJS error', err);
-    showToast('❌ Erro no envio', 'Falha ao enviar. Confira credenciais EmailJS e rede.', '#e63946');
+    showToast('Erro no envio', 'Falha ao enviar. Confira credenciais EmailJS e rede.', 'erro');
   } finally {
     btn.disabled = false; btn.classList.remove('loading');
   }
@@ -355,36 +400,42 @@ async function enviarBriefing(tipo) {
 // ══════════════════════════════════════
 let _toastTimer = null;
 
-function showToast(title, msg, color) {
+// tipo: 'erro' | 'aviso' | 'sucesso'
+function showToast(title, msg, tipo) {
   const DURATION = 5000;
 
-  // Determina tipo pelo color
-  const isErro    = color === '#e63946';
-  const isAviso   = color && color !== '#e63946' && color !== '#2d6a4f';
-  const isSuccesso = !isErro && !isAviso;
+  const config = {
+    erro:    { icon: '⚠️', bar: '#e63946', titleColor: '#c1121f' },
+    aviso:   { icon: '⚠️', bar: '#f4a261', titleColor: '#b45309' },
+    sucesso: { icon: '✅', bar: '#2d6a4f', titleColor: '#1a5c3a' },
+  };
 
-  const icon  = isErro ? '❌' : isAviso ? '⚠️' : '✅';
-  const bar   = isErro ? '#e63946' : isAviso ? '#f4a261' : '#2d6a4f';
-  const titleColor = isErro ? '#c1121f' : isAviso ? '#b45309' : '#1a5c3a';
+  // compatibilidade retroativa com chamadas que passam cor hex diretamente
+  let cfg;
+  if (tipo === 'erro' || tipo === '#e63946') {
+    cfg = config.erro;
+  } else if (tipo === 'sucesso' || tipo === '#2d6a4f') {
+    cfg = config.sucesso;
+  } else {
+    cfg = config.aviso;
+  }
 
   const t = document.getElementById('toast');
-  document.getElementById('toast-icon').textContent  = icon;
+  document.getElementById('toast-icon').textContent  = cfg.icon;
   document.getElementById('toast-title').textContent = title;
-  document.getElementById('toast-title').style.color = titleColor;
+  document.getElementById('toast-title').style.color = cfg.titleColor;
   document.getElementById('toast-msg').textContent   = msg;
-  document.getElementById('toast-bar').style.background = bar;
-  document.getElementById('toast-progress-bar').style.background = bar;
+  document.getElementById('toast-bar').style.background = cfg.bar;
+  document.getElementById('toast-progress-bar').style.background = cfg.bar;
   document.getElementById('toast-progress-bar').style.transition = 'none';
   document.getElementById('toast-progress-bar').style.transform  = 'scaleX(1)';
 
-  // Reinicia
   t.classList.remove('show');
   clearTimeout(_toastTimer);
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       t.classList.add('show');
-      // Barra de progresso
       const pb = document.getElementById('toast-progress-bar');
       pb.style.transition = `transform ${DURATION}ms linear`;
       pb.style.transform  = 'scaleX(0)';
@@ -401,7 +452,7 @@ function limpar(tipo) {
   const panel = document.getElementById('panel-' + tipo);
   if (!panel) return;
   panel.querySelectorAll('input[type=text], input[type=email], input[type=tel], textarea')
-    .forEach(el => { el.value = ''; });
+    .forEach(el => { el.value = ''; el.classList.remove('campo-erro'); });
   panel.querySelectorAll('input[type=radio], input[type=checkbox]')
     .forEach(el => { el.checked = false; });
 }
