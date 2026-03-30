@@ -5,7 +5,6 @@
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>bielgraf | Briefing</title>
   <link rel='stylesheet' href='style.css' />
-  <link rel="icon" href="data:,">
 </head>
 <body>
 
@@ -550,9 +549,20 @@
 </div><!-- fim .wrapper -->
 
 <!-- Toast de notificação -->
-<div id="toast" class="toast">
-  <strong id="toast-title"></strong>
-  <span id="toast-msg"></span>
+<div id="toast">
+  <div class="toast-inner">
+    <div class="toast-bar" id="toast-bar"></div>
+    <div class="toast-body">
+      <span class="toast-icon" id="toast-icon"></span>
+      <div class="toast-text">
+        <span id="toast-title"></span>
+        <span id="toast-msg"></span>
+      </div>
+    </div>
+  </div>
+  <div class="toast-progress">
+    <div class="toast-progress-bar" id="toast-progress-bar"></div>
+  </div>
 </div>
 
 <script src="script.js"></script>
