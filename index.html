@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>bielgraf | Briefing</title>
+  <link rel='stylesheet' href='style.css' />
+  <script src='https://cdn.emailjs.com/sdk/3.2.0/email.min.js'></script>
+</head>
+<body>
+
+
+
+<div class="wrapper">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="show('logo',this)">Logo</button>
+    <button class="tab-btn" onclick="show('flyer',this)">Flyer</button>
+    <button class="tab-btn" onclick="show('banner',this)">Banner</button>
+    <button class="tab-btn" onclick="show('story',this)">Story</button>
+    <button class="tab-btn" onclick="show('social',this)">Post Social</button>
+    <button class="tab-btn" onclick="show('card',this)">Cartão</button>
+    <button class="tab-btn" onclick="show('video',this)">Vídeo/Reels</button>
+  </div>
+
+  <!-- ═══════════ LOGO ═══════════ -->
+  <div id="panel-logo" class="panel active">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Identidade Visual & Logo</h1>
+      <p>Preencha com atenção — quanto mais detalhes, mais assertivo será o seu projeto.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Dados da Empresa</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="logo_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca <span class="req">*</span></div><input type="text" id="logo_empresa" placeholder="Ex: Studio Flor"></div>
+      <div class="question"><div class="q-label">Ramo de atuação <span class="req">*</span></div><input type="text" id="logo_ramo" placeholder="Ex: Moda feminina, Gastronomia..."></div>
+      <div class="question"><div class="q-label">Você já tem logo?</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="halogo" value="Não, é o primeiro logo"> Não, é o primeiro logo</label>
+          <label class="radio-item"><input type="radio" name="halogo" value="Sim, quero reformular"> Sim, quero reformular o atual</label>
+          <label class="radio-item"><input type="radio" name="halogo" value="Sim, versão complementar"> Sim, quero uma versão complementar</label>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Público & Referências</span></div>
+      <div class="question"><div class="q-label">Quem é seu cliente ideal?</div><textarea id="logo_publico" placeholder="Gênero, faixa etária, poder aquisitivo, comportamento..."></textarea></div>
+      <div class="question"><div class="q-label">Principais concorrentes</div><input type="text" id="logo_concorrentes" placeholder="Ex: Studio X, Atelier Y..."></div>
+      <div class="question"><div class="q-label">Como quer ser percebido?</div>
+        <div class="check-group" id="logo_personalidade">
+          <label class="check-item"><input type="checkbox" value="Sofisticada/Luxo"> Sofisticada / Luxo</label>
+          <label class="check-item"><input type="checkbox" value="Jovem/Descolada"> Jovem / Descolada</label>
+          <label class="check-item"><input type="checkbox" value="Confiável/Séria"> Confiável / Séria</label>
+          <label class="check-item"><input type="checkbox" value="Criativa/Artística"> Criativa / Artística</label>
+          <label class="check-item"><input type="checkbox" value="Minimalista/Clean"> Minimalista / Clean</label>
+          <label class="check-item"><input type="checkbox" value="Alegre/Colorida"> Alegre / Colorida</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Referências visuais</div><textarea id="logo_referencias" placeholder="Links de logos, marcas ou imagens..."></textarea></div>
+      <div class="question"><div class="q-label">O que NÃO quer no logo</div><textarea id="logo_nao_quer" placeholder="Ex: não quero cores frias, não quero minimalismo..."></textarea></div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">3</div><span>Preferências Técnicas</span></div>
+      <div class="question"><div class="q-label">Cor(es) de preferência</div><input type="text" id="logo_cores" placeholder="Ex: azul marinho e dourado, tons terrosos..."></div>
+      <div class="question"><div class="q-label">Tipo de logo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="tipo_logo" value="Só símbolo"> Só símbolo (ícone)</label>
+          <label class="radio-item"><input type="radio" name="tipo_logo" value="Só tipografia"> Só tipografia (nome escrito)</label>
+          <label class="radio-item"><input type="radio" name="tipo_logo" value="Símbolo + tipografia"> Símbolo + tipografia</label>
+          <label class="radio-item"><input type="radio" name="tipo_logo" value="A critério do designer"> Fica a critério do designer</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Onde o logo será utilizado?</div>
+        <div class="check-group" id="logo_usos">
+          <label class="check-item"><input type="checkbox" value="Redes sociais"> Redes sociais</label>
+          <label class="check-item"><input type="checkbox" value="Cartão de visita"> Cartão de visita</label>
+          <label class="check-item"><input type="checkbox" value="Embalagem/etiqueta"> Embalagem / etiqueta</label>
+          <label class="check-item"><input type="checkbox" value="Fachada/placa"> Fachada / placa</label>
+          <label class="check-item"><input type="checkbox" value="Site/e-commerce"> Site / e-commerce</label>
+          <label class="check-item"><input type="checkbox" value="Material impresso"> Material impresso</label>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">4</div><span>Informações Finais</span></div>
+      <div class="question"><div class="q-label">Prazo desejado</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_logo" value="Urgente (até 3 dias)"> Urgente (até 3 dias)</label>
+          <label class="radio-item"><input type="radio" name="prazo_logo" value="Normal (até 7 dias)"> Normal (até 7 dias)</label>
+          <label class="radio-item"><input type="radio" name="prazo_logo" value="Flexível"> Flexível (acima de 7 dias)</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Observações adicionais</div><textarea id="logo_obs" placeholder="Qualquer detalhe importante..."></textarea></div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="logo_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="logo_email_cliente" placeholder="email@email.com"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('logo')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('logo')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ FLYER ═══════════ -->
+  <div id="panel-flyer" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Flyer</h1>
+      <p>Para panfletos e materiais de divulgação impressos ou digitais.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Sobre o Flyer</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="flyer_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca</div><input type="text" id="flyer_empresa" placeholder="Ex: Pizzaria do Zé"></div>
+      <div class="question"><div class="q-label">Objetivo do flyer <span class="req">*</span></div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="obj_flyer" value="Divulgar evento"> Divulgar evento</label>
+          <label class="radio-item"><input type="radio" name="obj_flyer" value="Promoção/oferta"> Promoção / oferta</label>
+          <label class="radio-item"><input type="radio" name="obj_flyer" value="Apresentar serviço/produto"> Apresentar serviço / produto</label>
+          <label class="radio-item"><input type="radio" name="obj_flyer" value="Anúncio/comunicado"> Anúncio / comunicado</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Nome do evento / promoção</div><input type="text" id="flyer_evento" placeholder="Ex: Grande Liquidação de Verão"></div>
+      <div class="question"><div class="q-label">Data e horário</div><input type="text" id="flyer_data" placeholder="Ex: Sábado, 05 de abril • 19h às 23h"></div>
+      <div class="question"><div class="q-label">Local (se houver)</div><input type="text" id="flyer_local" placeholder="Ex: Rua das Flores, 123 — Recife/PE"></div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Conteúdo & Estilo</span></div>
+      <div class="question"><div class="q-label">Texto principal (headline) <span class="req">*</span></div><input type="text" id="flyer_headline" placeholder="Ex: Até 50% OFF em tudo!"></div>
+      <div class="question"><div class="q-label">Informações complementares</div><textarea id="flyer_info" placeholder="Preços, condições, lista de produtos..."></textarea></div>
+      <div class="question"><div class="q-label">Contato / CTA</div><input type="text" id="flyer_cta" placeholder="Ex: WhatsApp, link, telefone..."></div>
+      <div class="question"><div class="q-label">Formato</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="fmt_flyer" value="A4 impresso"> A4 (210×297mm) — impresso</label>
+          <label class="radio-item"><input type="radio" name="fmt_flyer" value="A5 impresso"> A5 (148×210mm) — impresso</label>
+          <label class="radio-item"><input type="radio" name="fmt_flyer" value="1080x1080 digital"> Quadrado 1080×1080px — digital</label>
+          <label class="radio-item"><input type="radio" name="fmt_flyer" value="1080x1350 digital"> Retrato 1080×1350px — digital</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Cores / observações de estilo</div><input type="text" id="flyer_cores" placeholder="Ex: tons quentes, preto e dourado..."></div>
+      <div class="question"><div class="q-label">Prazo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_flyer" value="Urgente (até 24h)"> Urgente (até 24h)</label>
+          <label class="radio-item"><input type="radio" name="prazo_flyer" value="Até 3 dias"> Até 3 dias</label>
+          <label class="radio-item"><input type="radio" name="prazo_flyer" value="Até 7 dias"> Até 7 dias</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Observações extras</div><textarea id="flyer_obs" placeholder="Qualquer informação adicional..."></textarea></div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="flyer_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('flyer')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('flyer')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ BANNER ═══════════ -->
+  <div id="panel-banner" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Banner</h1>
+      <p>Banners para fachada, evento, lona, digital e muito mais.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Tipo de Banner</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="banner_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca</div><input type="text" id="banner_empresa" placeholder="Ex: Auto Peças Silva"></div>
+      <div class="question"><div class="q-label">Tipo de banner</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="tipo_banner" value="Banner impresso (lona)"> Banner impresso (lona/plástico)</label>
+          <label class="radio-item"><input type="radio" name="tipo_banner" value="Banner digital"> Banner digital (site/email)</label>
+          <label class="radio-item"><input type="radio" name="tipo_banner" value="Banner redes sociais"> Banner para redes sociais</label>
+          <label class="radio-item"><input type="radio" name="tipo_banner" value="Roll-up/totem"> Roll-up / totem</label>
+          <label class="radio-item"><input type="radio" name="tipo_banner" value="Outdoor/backlight"> Outdoor / backlight</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Medidas (largura × altura) <span class="req">*</span></div><input type="text" id="banner_medidas" placeholder="Ex: 2m × 1m, 1920×600px..."></div>
+      <div class="question"><div class="q-label">Onde será exposto</div><input type="text" id="banner_local" placeholder="Ex: fachada do salão, evento de casamento..."></div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Conteúdo & Estilo</span></div>
+      <div class="question"><div class="q-label">Título principal <span class="req">*</span></div><input type="text" id="banner_titulo" placeholder="Ex: Reforma & Decoração • Orçamento Grátis"></div>
+      <div class="question"><div class="q-label">Subtítulo / slogan</div><input type="text" id="banner_slogan" placeholder="Ex: 10 anos transformando espaços"></div>
+      <div class="question"><div class="q-label">Textos complementares</div><textarea id="banner_textos" placeholder="Serviços, contato, QR code, endereço..."></textarea></div>
+      <div class="question"><div class="q-label">Cores / estilo visual</div><input type="text" id="banner_cores" placeholder="Ex: azul e branco, preto e dourado..."></div>
+      <div class="question"><div class="q-label">Referências visuais</div><textarea id="banner_refs" placeholder="Links ou descrição de banners que gosta..."></textarea></div>
+      <div class="question"><div class="q-label">Prazo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_banner" value="Urgente (até 24h)"> Urgente (até 24h)</label>
+          <label class="radio-item"><input type="radio" name="prazo_banner" value="Até 3 dias"> Até 3 dias</label>
+          <label class="radio-item"><input type="radio" name="prazo_banner" value="Até 7 dias"> Até 7 dias</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="banner_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('banner')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('banner')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ STORY ═══════════ -->
+  <div id="panel-story" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Story</h1>
+      <p>Stories para Instagram, WhatsApp, Facebook e TikTok.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Dados do Projeto</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="story_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca</div><input type="text" id="story_empresa" placeholder="Ex: @marcadocliente"></div>
+      <div class="question"><div class="q-label">Finalidade principal</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="obj_story" value="Divulgar produto/serviço"> Divulgar produto / serviço</label>
+          <label class="radio-item"><input type="radio" name="obj_story" value="Promoção/desconto"> Promoção / desconto</label>
+          <label class="radio-item"><input type="radio" name="obj_story" value="Anunciar novidade"> Anunciar novidade</label>
+          <label class="radio-item"><input type="radio" name="obj_story" value="Evento/convite"> Evento / convite</label>
+          <label class="radio-item"><input type="radio" name="obj_story" value="Enquete/interativo"> Enquete / interativo</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Plataforma</div>
+        <div class="check-group" id="story_plataformas">
+          <label class="check-item"><input type="checkbox" value="Instagram Stories"> Instagram Stories</label>
+          <label class="check-item"><input type="checkbox" value="WhatsApp Status"> WhatsApp Status</label>
+          <label class="check-item"><input type="checkbox" value="Facebook Stories"> Facebook Stories</label>
+          <label class="check-item"><input type="checkbox" value="TikTok"> TikTok</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Texto / mensagem principal <span class="req">*</span></div><textarea id="story_texto" placeholder="O que deve estar escrito? Ex: Hoje tem frete grátis!"></textarea></div>
+      <div class="question"><div class="q-label">Call to action</div><input type="text" id="story_cta" placeholder="Ex: Arraste pra cima, Manda mensagem..."></div>
+      <div class="question"><div class="q-label">Cores / estilo</div><input type="text" id="story_cores" placeholder="Ex: tons pastéis, dark, segue minha marca..."></div>
+      <div class="question"><div class="q-label">Animado ou estático?</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="anim_story" value="Animado (MP4/GIF)"> Animado (MP4 / GIF)</label>
+          <label class="radio-item"><input type="radio" name="anim_story" value="Estático (PNG/JPG)"> Estático (PNG / JPG)</label>
+          <label class="radio-item"><input type="radio" name="anim_story" value="Qualquer um"> Pode ser qualquer um</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Prazo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_story" value="Urgente (até 12h)"> Urgente (até 12h)</label>
+          <label class="radio-item"><input type="radio" name="prazo_story" value="Até 24h"> Até 24h</label>
+          <label class="radio-item"><input type="radio" name="prazo_story" value="Até 3 dias"> Até 3 dias</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Observações</div><textarea id="story_obs" placeholder="Qualquer detalhe..."></textarea></div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="story_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('story')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('story')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ SOCIAL ═══════════ -->
+  <div id="panel-social" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Post para Redes Sociais</h1>
+      <p>Feed do Instagram, Facebook, LinkedIn, Pinterest e outros.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Dados do Projeto</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="social_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / perfil</div><input type="text" id="social_empresa" placeholder="Ex: @marca ou nome da loja"></div>
+      <div class="question"><div class="q-label">Plataforma</div>
+        <div class="check-group" id="social_plataformas">
+          <label class="check-item"><input type="checkbox" value="Instagram (feed)"> Instagram (feed)</label>
+          <label class="check-item"><input type="checkbox" value="Facebook"> Facebook</label>
+          <label class="check-item"><input type="checkbox" value="LinkedIn"> LinkedIn</label>
+          <label class="check-item"><input type="checkbox" value="Pinterest"> Pinterest</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Formato</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="fmt_social" value="Quadrado 1080x1080"> Quadrado (1:1) — 1080×1080px</label>
+          <label class="radio-item"><input type="radio" name="fmt_social" value="Retrato 1080x1350"> Retrato (4:5) — 1080×1350px</label>
+          <label class="radio-item"><input type="radio" name="fmt_social" value="Carrossel"> Carrossel (múltiplas imagens)</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Texto que deve aparecer no post <span class="req">*</span></div><textarea id="social_texto" placeholder="Título, descrição, preço, informações..."></textarea></div>
+      <div class="question"><div class="q-label">Cores da marca / preferidas</div><input type="text" id="social_cores" placeholder="Ex: verde escuro + bege + branco"></div>
+      <div class="question"><div class="q-label">Referências de perfis</div><textarea id="social_refs" placeholder="@nomesdoperfil ou links do Instagram/Pinterest..."></textarea></div>
+      <div class="question"><div class="q-label">Data ideal para entrega</div><input type="text" id="social_prazo" placeholder="Ex: até sexta-feira (04/04)"></div>
+      <div class="question"><div class="q-label">Observações</div><textarea id="social_obs" placeholder="Qualquer informação adicional..."></textarea></div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="social_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('social')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('social')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ CARTÃO ═══════════ -->
+  <div id="panel-card" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Cartão de Visita</h1>
+      <p>Cartão físico ou digital — todas as informações para um cartão perfeito.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Dados do Cartão</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="card_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome a exibir no cartão</div><input type="text" id="card_nome" placeholder="Ex: Carlos Mendes ou apenas Carlos"></div>
+      <div class="question"><div class="q-label">Cargo / função</div><input type="text" id="card_cargo" placeholder="Ex: Designer Gráfico, CEO, Fotógrafa..."></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca</div><input type="text" id="card_empresa" placeholder="Ex: Bielgraf Studio"></div>
+      <div class="question"><div class="q-label">Dados de contato</div><textarea id="card_contatos" placeholder="WhatsApp: (81) 9 9999-9999&#10;E-mail: contato@email.com&#10;Instagram: @perfil&#10;Site: www.site.com"></textarea></div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Formato & Estilo</span></div>
+      <div class="question"><div class="q-label">Tipo de cartão</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="tipo_card" value="Físico impresso 9x5cm"> Físico (impresso) — 9×5cm</label>
+          <label class="radio-item"><input type="radio" name="tipo_card" value="Digital"> Digital (imagem para compartilhar)</label>
+          <label class="radio-item"><input type="radio" name="tipo_card" value="Ambos"> Ambos</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Estilo desejado</div>
+        <div class="check-group" id="card_estilo">
+          <label class="check-item"><input type="checkbox" value="Elegante/Sofisticado"> Elegante / Sofisticado</label>
+          <label class="check-item"><input type="checkbox" value="Minimalista/Clean"> Minimalista / Clean</label>
+          <label class="check-item"><input type="checkbox" value="Moderno/Arrojado"> Moderno / Arrojado</label>
+          <label class="check-item"><input type="checkbox" value="Colorido/Criativo"> Colorido / Criativo</label>
+          <label class="check-item"><input type="checkbox" value="Corporativo/Sério"> Corporativo / Sério</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Cores</div><input type="text" id="card_cores" placeholder="Ex: preto e dourado, segue minha identidade visual..."></div>
+      <div class="question"><div class="q-label">Referências visuais</div><textarea id="card_refs" placeholder="Links ou descrição de cartões que gosta..."></textarea></div>
+      <div class="question"><div class="q-label">Prazo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_card" value="Urgente (até 24h)"> Urgente (até 24h)</label>
+          <label class="radio-item"><input type="radio" name="prazo_card" value="Até 3 dias"> Até 3 dias</label>
+          <label class="radio-item"><input type="radio" name="prazo_card" value="Até 7 dias"> Até 7 dias</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="card_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('card')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('card')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
+  <!-- ═══════════ VÍDEO ═══════════ -->
+  <div id="panel-video" class="panel">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Vídeo / Reels / Motion</h1>
+      <p>Animações, reels, vídeos institucionais, motion graphics e afins.</p>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Tipo de Vídeo</span></div>
+      <div class="question"><div class="q-label">Nome completo do cliente <span class="req">*</span></div><input type="text" id="video_cliente" placeholder="Nome do cliente"></div>
+      <div class="question"><div class="q-label">Nome da empresa / marca</div><input type="text" id="video_empresa" placeholder="Ex: Studio Reels"></div>
+      <div class="question"><div class="q-label">Tipo de conteúdo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="tipo_video" value="Reels/TikTok"> Reels / TikTok (até 60s)</label>
+          <label class="radio-item"><input type="radio" name="tipo_video" value="Story animado"> Story animado</label>
+          <label class="radio-item"><input type="radio" name="tipo_video" value="Motion para feed"> Motion para post de feed</label>
+          <label class="radio-item"><input type="radio" name="tipo_video" value="Vídeo institucional"> Vídeo institucional</label>
+          <label class="radio-item"><input type="radio" name="tipo_video" value="Animação de logo (intro)"> Animação de logo (intro)</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Duração desejada</div><input type="text" id="video_duracao" placeholder="Ex: 15 segundos, 30 segundos..."></div>
+      <div class="question"><div class="q-label">Formato</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="fmt_video" value="Vertical 9:16"> Vertical 9:16 (Stories / Reels)</label>
+          <label class="radio-item"><input type="radio" name="fmt_video" value="Quadrado 1:1"> Quadrado 1:1 (Feed)</label>
+          <label class="radio-item"><input type="radio" name="fmt_video" value="Horizontal 16:9"> Horizontal 16:9 (YouTube / TV)</label>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Conteúdo & Estilo</span></div>
+      <div class="question"><div class="q-label">Mensagem / roteiro <span class="req">*</span></div><textarea id="video_roteiro" placeholder="Descreva o que deve acontecer no vídeo..."></textarea></div>
+      <div class="question"><div class="q-label">Textos / legendas na tela</div><textarea id="video_textos" placeholder="Frases que devem aparecer, CTAs..."></textarea></div>
+      <div class="question"><div class="q-label">Trilha sonora</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="audio" value="Vou indicar a música"> Vou indicar a música</label>
+          <label class="radio-item"><input type="radio" name="audio" value="Escolha a música adequada"> Escolha a música adequada</label>
+          <label class="radio-item"><input type="radio" name="audio" value="Sem áudio"> Sem áudio / só texto na tela</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Referências de vídeos / canais</div><textarea id="video_refs" placeholder="Links do YouTube, TikTok, Instagram..."></textarea></div>
+      <div class="question"><div class="q-label">Prazo</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="prazo_video" value="Urgente (até 24h)"> Urgente (até 24h)</label>
+          <label class="radio-item"><input type="radio" name="prazo_video" value="Até 3 dias"> Até 3 dias</label>
+          <label class="radio-item"><input type="radio" name="prazo_video" value="Até 7 dias"> Até 7 dias</label>
+          <label class="radio-item"><input type="radio" name="prazo_video" value="Flexível"> Flexível</label>
+        </div>
+      </div>
+      <div class="question"><div class="q-label">Observações</div><textarea id="video_obs" placeholder="Qualquer detalhe importante..."></textarea></div>
+      <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="video_tel" placeholder="(81) 9 9999-9999"></div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('video')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('video')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <div class="toast-inner">
+    <div class="toast-title" id="toast-title">✓ Briefing enviado!</div>
+    <div class="toast-msg" id="toast-msg">E-mail enviado para bielgraff@gmail.com com sucesso.</div>
+  </div>
+</div>
+
+
+
+<script src='script.js'></script>
+</body>
+</html>
