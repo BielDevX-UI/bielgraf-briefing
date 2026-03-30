@@ -1,51 +1,412 @@
+/* ============================================================
+   FONTES — importa as fontes do Google usadas no site
+   DM Sans = textos gerais | Playfair Display = títulos
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{--brand:#1a1a2e;--accent:#e63946;--surface:#f8f8f6;--card:#ffffff;--text:#1a1a2e;--muted:#6b7280;--border:#e5e5e5;--input-bg:#fafafa;--green:#2d6a4f}
-  html{background:#0d0d0d} body{font-family:'DM Sans',sans-serif;background:#0d0d0d;color:var(--text)}
-  .wrapper{max-width:720px;margin:0 auto;padding:0 0 60px}
-  .tab-nav{background:var(--brand);padding:16px 20px 0;display:flex;gap:4px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
-  .tab-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;padding:9px 14px;border:none;border-radius:6px 6px 0 0;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s}
-  .tab-btn:hover{background:rgba(255,255,255,.15);color:#fff}
-  .tab-btn.active{background:#0d0d0d;color:var(--brand);font-weight:600}
-  .form-header{background:var(--brand);border-top:5px solid var(--accent);padding:32px 32px 28px}
-  .brand-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
-  .form-header h1{font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.25;margin-bottom:8px}
-  .form-header p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
-  .section{background:var(--card);border:0.5px solid var(--border);border-radius:8px;margin:12px 16px 0;overflow:hidden}
-  .section-header{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:10px}
-  .section-num{background:var(--accent);color:#fff;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .section-header span{color:#fff;font-size:14px;font-weight:500}
-  .question{padding:20px 20px 4px;border-bottom:0.5px solid var(--border)}
-  .question:last-child{border-bottom:none;padding-bottom:20px}
-  .q-label{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px;display:flex;gap:4px}
-  .q-label .req{color:var(--accent)}
-  .q-hint{font-size:12px;color:var(--muted);margin-bottom:10px;margin-top:-6px}
-  input[type=text],input[type=email],input[type=tel],textarea,select{width:100%;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--input-bg);border:0.5px solid var(--border);border-radius:6px;padding:10px 13px;outline:none;transition:border-color .2s}
-  input[type=text]:focus,textarea:focus,select:focus{border-color:var(--accent)}
-  textarea{resize:vertical;min-height:72px}
-  .radio-group,.check-group{display:flex;flex-direction:column;gap:8px}
-  .radio-item,.check-item{display:flex;align-items:center;gap:10px;padding:9px 13px;border:0.5px solid var(--border);border-radius:6px;background:var(--input-bg);font-size:14px;cursor:pointer;transition:border-color .2s,background .2s}
-  .radio-item:hover,.check-item:hover{border-color:var(--accent);background:#fff8f8}
-  .radio-item input,.check-item input{accent-color:var(--accent);width:16px;height:16px}
-  .form-footer{padding:20px 16px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  .btn-submit{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:13px 32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
-  .btn-submit:hover{opacity:.88}
-  .btn-submit:disabled{opacity:.6;cursor:not-allowed}
-  .btn-clear{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--accent);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-  .footer-note{font-size:12px;color:var(--muted);margin-top:12px;padding:0 16px}
-  .panel{display:none}
-  .panel.active{display:block}
+/* ============================================================
+   RESET — zera margens e paddings padrão do navegador
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Toast */
-  #toast{position:fixed;bottom:28px;right:28px;z-index:999;pointer-events:none;opacity:0;transform:translateY(12px);transition:all .35s}
-  #toast.show{opacity:1;transform:translateY(0)}
-  .toast-inner{background:#fff;border:0.5px solid var(--border);border-left:4px solid var(--green);border-radius:10px;padding:16px 20px;box-shadow:0 4px 24px rgba(0,0,0,.10);max-width:320px}
-  .toast-title{font-size:14px;font-weight:600;color:var(--green);margin-bottom:4px}
-  .toast-msg{font-size:13px;color:var(--muted);line-height:1.5}
+/* ============================================================
+   VARIÁVEIS DE COR — altere aqui para mudar as cores do site
+   --brand    = cor escura principal (fundo do header, seções)
+   --accent   = cor de destaque vermelha (botões, borda, badge)
+   --surface  = cor de fundo dos cards brancos
+   --card     = fundo dos cartões de pergunta
+   --text     = cor do texto principal
+   --muted    = cor do texto secundário (dicas, placeholders)
+   --border   = cor das bordas
+   --input-bg = fundo dos campos de texto
+   --green    = cor do toast de sucesso
+   ============================================================ */
+:root {
+  --brand:    #1a1a2e;
+  --accent:   #e63946;
+  --surface:  #f8f8f6;
+  --card:     #ffffff;
+  --text:     #1a1a2e;
+  --muted:    #6b7280;
+  --border:   #e5e5e5;
+  --input-bg: #fafafa;
+  --green:    #2d6a4f;
+}
 
-  /* Spinner */
-  .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
-  .btn-submit.loading .spinner{display:block}
-  .btn-submit.loading .btn-text{opacity:.7}
-  @keyframes spin{to{transform:rotate(360deg)}}
+/* ============================================================
+   FUNDO DA PÁGINA — cor preta nas laterais do formulário
+   Mude #0d0d0d para outra cor se quiser fundo diferente
+   ============================================================ */
+html, body {
+  background: #0d0d0d;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ============================================================
+   WRAPPER — caixa central que limita a largura do formulário
+   max-width = largura máxima no PC (720px)
+   margin: 0 auto = centraliza na tela
+   ============================================================ */
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+/* ============================================================
+   MENU DE ABAS — barra de navegação no topo (LOGO, FLYER...)
+   position: sticky = fica fixo no topo ao rolar a página
+   ============================================================ */
+.tab-nav {
+  background: var(--brand);
+  padding: 16px 20px 0;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Botão de aba inativo */
+.tab-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.6);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+/* Botão ao passar o mouse */
+.tab-btn:hover {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+
+/* Botão da aba ativa (selecionada) */
+.tab-btn.active {
+  background: #0d0d0d;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CABEÇALHO DO FORMULÁRIO — área escura com título e badge
+   ============================================================ */
+.form-header {
+  background: var(--brand);
+  border-top: 5px solid var(--accent);
+  padding: 32px 32px 28px;
+}
+
+/* Badge "✦ bielgraf" vermelho */
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+/* Título grande do formulário */
+.form-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+/* Subtítulo abaixo do título */
+.form-header p {
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SEÇÕES — cada bloco de perguntas (ex: "Dados da Empresa")
+   ============================================================ */
+.section {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  margin: 12px 16px 0;
+  overflow: hidden;
+}
+
+/* Cabeçalho da seção com número e título */
+.section-header {
+  background: var(--brand);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Bolinha vermelha com o número da seção */
+.section-num {
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Texto do título da seção */
+.section-header span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PERGUNTAS — cada campo individual dentro de uma seção
+   ============================================================ */
+.question {
+  padding: 20px 20px 4px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.question:last-child {
+  border-bottom: none;
+  padding-bottom: 20px;
+}
+
+/* Label da pergunta */
+.q-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Asterisco vermelho de campo obrigatório */
+.q-label .req { color: var(--accent); }
+
+/* Dica abaixo do label */
+.q-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: -6px;
+}
+
+/* ============================================================
+   CAMPOS DE TEXTO — inputs, textareas e selects
+   ============================================================ */
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea,
+select {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--input-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 13px;
+  outline: none;
+  transition: border-color .2s;
+}
+
+/* Borda vermelha ao clicar no campo */
+input[type=text]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+/* Área de texto pode ser redimensionada verticalmente */
+textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+/* ============================================================
+   OPÇÕES DE RADIO E CHECKBOX — botões de seleção
+   ============================================================ */
+.radio-group, .check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-item, .check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.radio-item:hover, .check-item:hover {
+  border-color: var(--accent);
+  background: #fff8f8;
+}
+
+.radio-item input, .check-item input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================================
+   RODAPÉ DO FORMULÁRIO — área com botão de enviar
+   ============================================================ */
+.form-footer {
+  padding: 20px 16px 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Botão principal de envio */
+.btn-submit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 32px;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-submit:hover    { opacity: .88; }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Botão de limpar formulário */
+.btn-clear {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+/* ============================================================
+   PAINÉIS — cada formulário é um painel, só o ativo aparece
+   ============================================================ */
+.panel        { display: none; }
+.panel.active { display: block; }
+
+/* ============================================================
+   TOAST — notificação de sucesso/erro no canto da tela
+   ============================================================ */
+#toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all .35s;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-inner {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-left: 4px solid var(--green);
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+  max-width: 320px;
+}
+
+.toast-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.toast-msg {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   SPINNER — ícone de carregamento no botão de enviar
+   ============================================================ */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: none;
+}
+
+.btn-submit.loading .spinner  { display: block; }
+.btn-submit.loading .btn-text { opacity: .7; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   RESPONSIVO MOBILE — ajustes para telas menores que 600px
+   Tudo abaixo só vale no celular
+   ============================================================ */
+@media (max-width: 600px) {
+  .tab-btn { font-size: 10px; padding: 7px 10px; }
+  .form-header { padding: 24px 20px 20px; }
+  .form-header h1 { font-size: 20px; }
+  .section { margin: 10px 0 0; border-radius: 0; }
+  #toast { right: 12px; left: 12px; bottom: 16px; }
+  .toast-inner { max-width: 100%; }
+  .btn-submit { width: 100%; justify-content: center; }
+}
