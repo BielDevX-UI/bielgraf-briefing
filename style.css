@@ -1,25 +1,15 @@
 /* ============================================================
-   FONTES — importa as fontes do Google usadas no site
-   DM Sans = textos gerais | Playfair Display = títulos
+   FONTES
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
 
 /* ============================================================
-   RESET — zera margens e paddings padrão do navegador
+   RESET
    ============================================================ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ============================================================
-   VARIÁVEIS DE COR — altere aqui para mudar as cores do site
-   --brand    = cor escura principal (fundo do header, seções)
-   --accent   = cor de destaque vermelha (botões, borda, badge)
-   --surface  = cor de fundo dos cards brancos
-   --card     = fundo dos cartões de pergunta
-   --text     = cor do texto principal
-   --muted    = cor do texto secundário (dicas, placeholders)
-   --border   = cor das bordas
-   --input-bg = fundo dos campos de texto
-   --green    = cor do toast de sucesso
+   VARIÁVEIS DE COR
    ============================================================ */
 :root {
   --brand:    #1a1a2e;
@@ -34,8 +24,7 @@
 }
 
 /* ============================================================
-   FUNDO DA PÁGINA — cor preta nas laterais do formulário
-   Mude #0d0d0d para outra cor se quiser fundo diferente
+   FUNDO DA PÁGINA
    ============================================================ */
 html, body {
   background: #0d0d0d;
@@ -44,9 +33,7 @@ html, body {
 }
 
 /* ============================================================
-   WRAPPER — caixa central que limita a largura do formulário
-   max-width = largura máxima no PC (720px)
-   margin: 0 auto = centraliza na tela
+   WRAPPER
    ============================================================ */
 .wrapper {
   width: 100%;
@@ -56,8 +43,7 @@ html, body {
 }
 
 /* ============================================================
-   MENU DE ABAS — barra de navegação no topo (LOGO, FLYER...)
-   position: sticky = fica fixo no topo ao rolar a página
+   MENU DE ABAS
    ============================================================ */
 .tab-nav {
   background: var(--brand);
@@ -70,7 +56,6 @@ html, body {
   z-index: 10;
 }
 
-/* Botão de aba inativo */
 .tab-btn {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
@@ -86,13 +71,11 @@ html, body {
   transition: all .2s;
 }
 
-/* Botão ao passar o mouse */
 .tab-btn:hover {
   background: rgba(255,255,255,.15);
   color: #fff;
 }
 
-/* Botão da aba ativa (selecionada) */
 .tab-btn.active {
   background: #0d0d0d;
   color: #e63946;
@@ -100,7 +83,7 @@ html, body {
 }
 
 /* ============================================================
-   CABEÇALHO DO FORMULÁRIO — área escura com título e badge
+   CABEÇALHO DO FORMULÁRIO
    ============================================================ */
 .form-header {
   background: var(--brand);
@@ -108,7 +91,6 @@ html, body {
   padding: 32px 32px 28px;
 }
 
-/* Badge "✦ bielgraf" vermelho */
 .brand-badge {
   display: inline-flex;
   align-items: center;
@@ -124,7 +106,6 @@ html, body {
   margin-bottom: 16px;
 }
 
-/* Título grande do formulário */
 .form-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
@@ -133,7 +114,6 @@ html, body {
   margin-bottom: 8px;
 }
 
-/* Subtítulo abaixo do título */
 .form-header p {
   font-size: 13px;
   color: rgba(255,255,255,.6);
@@ -141,7 +121,7 @@ html, body {
 }
 
 /* ============================================================
-   SEÇÕES — cada bloco de perguntas (ex: "Dados da Empresa")
+   SEÇÕES
    ============================================================ */
 .section {
   background: var(--card);
@@ -151,7 +131,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Cabeçalho da seção com número e título */
 .section-header {
   background: var(--brand);
   padding: 14px 20px;
@@ -160,7 +139,6 @@ html, body {
   gap: 10px;
 }
 
-/* Bolinha vermelha com o número da seção */
 .section-num {
   background: var(--accent);
   color: #fff;
@@ -175,7 +153,6 @@ html, body {
   flex-shrink: 0;
 }
 
-/* Texto do título da seção */
 .section-header span {
   color: #fff;
   font-size: 14px;
@@ -183,7 +160,7 @@ html, body {
 }
 
 /* ============================================================
-   PERGUNTAS — cada campo individual dentro de uma seção
+   PERGUNTAS
    ============================================================ */
 .question {
   padding: 20px 20px 4px;
@@ -195,7 +172,6 @@ html, body {
   padding-bottom: 20px;
 }
 
-/* Label da pergunta */
 .q-label {
   font-size: 14px;
   font-weight: 500;
@@ -205,10 +181,8 @@ html, body {
   gap: 4px;
 }
 
-/* Asterisco vermelho de campo obrigatório */
 .q-label .req { color: var(--accent); }
 
-/* Dica abaixo do label */
 .q-hint {
   font-size: 12px;
   color: var(--muted);
@@ -217,7 +191,7 @@ html, body {
 }
 
 /* ============================================================
-   CAMPOS DE TEXTO — inputs, textareas e selects
+   CAMPOS DE TEXTO
    ============================================================ */
 input[type=text],
 input[type=email],
@@ -233,24 +207,41 @@ select {
   border-radius: 6px;
   padding: 10px 13px;
   outline: none;
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
 }
 
-/* Borda vermelha ao clicar no campo */
 input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
 textarea:focus,
 select:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(230,57,70,.08);
 }
 
-/* Área de texto pode ser redimensionada verticalmente */
+/* Campo com erro */
+input.campo-erro,
+textarea.campo-erro {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(230,57,70,.15) !important;
+  animation: shake .4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
 textarea {
   resize: vertical;
   min-height: 72px;
 }
 
 /* ============================================================
-   OPÇÕES DE RADIO E CHECKBOX — botões de seleção
+   RADIO E CHECKBOX
    ============================================================ */
 .radio-group, .check-group {
   display: flex;
@@ -283,7 +274,7 @@ textarea {
 }
 
 /* ============================================================
-   RODAPÉ DO FORMULÁRIO — área com botão de enviar
+   RODAPÉ DO FORMULÁRIO
    ============================================================ */
 .form-footer {
   padding: 20px 16px 0;
@@ -293,7 +284,6 @@ textarea {
   flex-wrap: wrap;
 }
 
-/* Botão principal de envio */
 .btn-submit {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -313,7 +303,6 @@ textarea {
 .btn-submit:hover    { opacity: .88; }
 .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
 
-/* Botão de limpar formulário */
 .btn-clear {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
@@ -333,55 +322,105 @@ textarea {
 }
 
 /* ============================================================
-   PAINÉIS — cada formulário é um painel, só o ativo aparece
+   PAINÉIS
    ============================================================ */
 .panel        { display: none; }
 .panel.active { display: block; }
 
 /* ============================================================
-   TOAST — notificação de sucesso/erro no canto da tela
+   TOAST — notificação redesenhada
    ============================================================ */
 #toast {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  z-index: 999;
+  z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(12px);
-  transition: all .35s;
+  transform: translateY(16px) scale(.97);
+  transition: opacity .3s ease, transform .3s ease;
+  min-width: 300px;
+  max-width: 360px;
 }
 
 #toast.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 .toast-inner {
-  background: #fff;
-  border: 0.5px solid var(--border);
-  border-left: 4px solid var(--green);
-  border-radius: 10px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.10);
-  max-width: 320px;
+  border-radius: 14px;
+  padding: 0;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.18),
+    0 2px 8px rgba(0,0,0,.10);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
 }
 
-.toast-title {
+/* Barra lateral colorida */
+.toast-bar {
+  width: 5px;
+  flex-shrink: 0;
+}
+
+/* Conteúdo central */
+.toast-body {
+  background: #fff;
+  padding: 16px 18px;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Ícone do toast */
+.toast-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  line-height: 1;
+}
+
+.toast-text { flex: 1; }
+
+#toast-title {
+  display: block;
   font-size: 14px;
   font-weight: 600;
-  color: var(--green);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  line-height: 1.3;
 }
 
-.toast-msg {
-  font-size: 13px;
+#toast-msg {
+  display: block;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.5;
 }
 
+/* Barra de progresso no rodapé do toast */
+.toast-progress {
+  height: 3px;
+  background: rgba(0,0,0,.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.toast-progress-bar {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform linear;
+}
+
 /* ============================================================
-   SPINNER — ícone de carregamento no botão de enviar
+   SPINNER
    ============================================================ */
 .spinner {
   width: 16px;
@@ -399,15 +438,13 @@ textarea {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ============================================================
-   RESPONSIVO MOBILE — ajustes para telas menores que 600px
-   Tudo abaixo só vale no celular
+   RESPONSIVO MOBILE
    ============================================================ */
 @media (max-width: 600px) {
   .tab-btn { font-size: 10px; padding: 7px 10px; }
   .form-header { padding: 24px 20px 20px; }
   .form-header h1 { font-size: 20px; }
   .section { margin: 10px 0 0; border-radius: 0; }
-  #toast { right: 12px; left: 12px; bottom: 16px; }
-  .toast-inner { max-width: 100%; }
+  #toast { right: 12px; left: 12px; bottom: 16px; min-width: unset; max-width: 100%; }
   .btn-submit { width: 100%; justify-content: center; }
 }
