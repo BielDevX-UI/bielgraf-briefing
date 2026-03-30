@@ -353,13 +353,45 @@ async function enviarBriefing(tipo) {
 // ══════════════════════════════════════
 // TOAST
 // ══════════════════════════════════════
+let _toastTimer = null;
+
 function showToast(title, msg, color) {
+  const DURATION = 5000;
+
+  // Determina tipo pelo color
+  const isErro    = color === '#e63946';
+  const isAviso   = color && color !== '#e63946' && color !== '#2d6a4f';
+  const isSuccesso = !isErro && !isAviso;
+
+  const icon  = isErro ? '❌' : isAviso ? '⚠️' : '✅';
+  const bar   = isErro ? '#e63946' : isAviso ? '#f4a261' : '#2d6a4f';
+  const titleColor = isErro ? '#c1121f' : isAviso ? '#b45309' : '#1a5c3a';
+
   const t = document.getElementById('toast');
+  document.getElementById('toast-icon').textContent  = icon;
   document.getElementById('toast-title').textContent = title;
-  document.getElementById('toast-title').style.color = color || '#2d6a4f';
-  document.getElementById('toast-msg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 5000);
+  document.getElementById('toast-title').style.color = titleColor;
+  document.getElementById('toast-msg').textContent   = msg;
+  document.getElementById('toast-bar').style.background = bar;
+  document.getElementById('toast-progress-bar').style.background = bar;
+  document.getElementById('toast-progress-bar').style.transition = 'none';
+  document.getElementById('toast-progress-bar').style.transform  = 'scaleX(1)';
+
+  // Reinicia
+  t.classList.remove('show');
+  clearTimeout(_toastTimer);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      t.classList.add('show');
+      // Barra de progresso
+      const pb = document.getElementById('toast-progress-bar');
+      pb.style.transition = `transform ${DURATION}ms linear`;
+      pb.style.transform  = 'scaleX(0)';
+    });
+  });
+
+  _toastTimer = setTimeout(() => t.classList.remove('show'), DURATION);
 }
 
 // ══════════════════════════════════════
