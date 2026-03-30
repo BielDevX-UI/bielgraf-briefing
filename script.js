@@ -122,6 +122,22 @@ function coletarDados(tipo){
     m.textos=getVal('video_textos'); m.audio=getRadio('audio');
     m.refs=getVal('video_refs'); m.prazo=getRadio('prazo_video');
     m.obs=getVal('video_obs'); m.tel=getVal('video_tel');
+     } else if(tipo==='thumbnail'){
+    m.titulo_video=getVal('thumbnail_titulo_video');
+    m.tema_video=getVal('thumbnail_tema_video');
+    m.descricao_conteudo=getVal('thumbnail_descricao_conteudo');
+    m.estilo_visual=getRadio('thumbnail_estilo_visual');
+    m.elementos_visuais=getChecks('thumbnail_elementos_visuais_group');
+    m.cores_preferidas=getVal('thumbnail_cores_preferidas');
+    m.referencia_visual=getVal('thumbnail_referencia_visual');
+    m.texto_thumbnail=getVal('thumbnail_texto_thumbnail');
+    m.tom_mensagem=getRadio('thumbnail_tom_mensagem');
+    m.palavras_importantes=getVal('thumbnail_palavras_importantes');
+    m.tem_foto=getRadio('thumbnail_tem_foto');
+    m.arquivos_adicionais=getChecks('thumbnail_arquivos_adicionais_group');
+    m.observacoes=getVal('thumbnail_observacoes');
+    m.tel=getVal('thumbnail_tel');
+    m.cliente=getVal('thumbnail_cliente');
   }
   return m;
 }
