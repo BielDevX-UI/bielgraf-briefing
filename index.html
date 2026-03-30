@@ -5,16 +5,13 @@
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>bielgraf | Briefing</title>
   <link rel='stylesheet' href='style.css' />
-  <script src='https://cdn.emailjs.com/sdk/3.2.0/email.min.js'></script>
 </head>
 <body>
 
-
-
 <div class="wrapper" style="width:100%;max-width:100%">
   <div class="tab-nav">
-    <button class="tab-btn" onclick="show('thumbnail',this)">Thumbnail</button>
-    <button class="tab-btn active" onclick="show('logo',this)">Logo</button>
+    <button class="tab-btn active" onclick="show('thumbnail',this)">Thumbnail</button>
+    <button class="tab-btn" onclick="show('logo',this)">Logo</button>
     <button class="tab-btn" onclick="show('flyer',this)">Flyer</button>
     <button class="tab-btn" onclick="show('banner',this)">Banner</button>
     <button class="tab-btn" onclick="show('story',this)">Story</button>
@@ -23,8 +20,144 @@
     <button class="tab-btn" onclick="show('video',this)">Vídeo/Reels</button>
   </div>
 
+  <!-- ═══════════ THUMBNAIL ═══════════ -->
+  <div id="panel-thumbnail" class="panel active">
+    <div class="form-header">
+      <div class="brand-badge">✦ bielgraf</div>
+      <h1>Briefing de Thumbnail</h1>
+      <p>Preencha as informações abaixo para que eu crie uma thumbnail estratégica, chamativa e alinhada ao seu conteúdo.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><span>Dados do Cliente</span></div>
+      <div class="question">
+        <div class="q-label">Nome completo do cliente <span class="req">*</span></div>
+        <input type="text" id="thumbnail_cliente" placeholder="Nome do cliente">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><span>Informações do Projeto</span></div>
+      <div class="question">
+        <div class="q-label">Qual é o título do vídeo ou conteúdo? <span class="req">*</span></div>
+        <input type="text" id="thumbnail_titulo_video" placeholder="Exemplo: Como ganhar dinheiro com design em 2026">
+      </div>
+      <div class="question">
+        <div class="q-label">Qual é o tema principal da thumbnail? <span class="req">*</span></div>
+        <input type="text" id="thumbnail_tema_video" placeholder="Exemplo: design, games, marketing, tutorial, vlog...">
+      </div>
+      <div class="question">
+        <div class="q-label">Descreva rapidamente o conteúdo do vídeo</div>
+        <textarea id="thumbnail_descricao_conteudo" placeholder="Explique sobre o que é o vídeo e o que será mostrado..."></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">3</div><span>Estilo Visual</span></div>
+      <div class="question">
+        <div class="q-label">Qual estilo visual você prefere?</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Chamativo e exagerado"> Chamativo e exagerado</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Profissional e limpo"> Profissional e limpo</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Dark e impactante"> Dark e impactante</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Colorido e moderno"> Colorido e moderno</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Minimalista"> Minimalista</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Outro"> Outro</label>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-label">Quais elementos você quer destacar na thumbnail?</div>
+        <div class="check-group" id="thumbnail_elementos_visuais_group">
+          <label class="check-item"><input type="checkbox" value="Rosto/pessoa"> Rosto/pessoa</label>
+          <label class="check-item"><input type="checkbox" value="Texto grande"> Texto grande</label>
+          <label class="check-item"><input type="checkbox" value="Produto/objeto"> Produto/objeto</label>
+          <label class="check-item"><input type="checkbox" value="Fundo com efeitos"> Fundo com efeitos</label>
+          <label class="check-item"><input type="checkbox" value="Setas/círculos"> Setas/círculos</label>
+          <label class="check-item"><input type="checkbox" value="Explosões/brilho"> Explosões/brilho</label>
+          <label class="check-item"><input type="checkbox" value="Logo da marca"> Logo da marca</label>
+          <label class="check-item"><input type="checkbox" value="Antes e depois"> Antes e depois</label>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-label">Quais cores você deseja usar?</div>
+        <input type="text" id="thumbnail_cores_preferidas" placeholder="Exemplo: amarelo, preto e branco">
+      </div>
+      <div class="question">
+        <div class="q-label">Tem alguma referência de thumbnail?</div>
+        <textarea id="thumbnail_referencia_visual" placeholder="Exemplo: igual thumbnails do MrBeast, com rosto grande e texto forte..."></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">4</div><span>Textos e Mensagem</span></div>
+      <div class="question">
+        <div class="q-label">Qual texto deve aparecer na thumbnail? <span class="req">*</span></div>
+        <input type="text" id="thumbnail_texto_thumbnail" placeholder="Exemplo: NÃO COMPRE ISSO">
+      </div>
+      <div class="question">
+        <div class="q-label">Qual tom a thumbnail deve transmitir?</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Urgência"> Urgência</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Curiosidade"> Curiosidade</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Choque"> Choque</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Autoridade"> Autoridade</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Humor"> Humor</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Mistério"> Mistério</label>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-label">Existe alguma palavra que precisa ter mais destaque?</div>
+        <input type="text" id="thumbnail_palavras_importantes" placeholder="Exemplo: GRÁTIS, SEGREDO, ERRO, URGENTE...">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">5</div><span>Arquivos e Preferências</span></div>
+      <div class="question">
+        <div class="q-label">Você vai enviar foto/imagem para usar?</div>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="thumbnail_tem_foto" value="Sim"> Sim</label>
+          <label class="radio-item"><input type="radio" name="thumbnail_tem_foto" value="Não"> Não</label>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-label">Quais arquivos ou materiais serão enviados?</div>
+        <div class="check-group" id="thumbnail_arquivos_adicionais_group">
+          <label class="check-item"><input type="checkbox" value="Foto da pessoa"> Foto da pessoa</label>
+          <label class="check-item"><input type="checkbox" value="Logo"> Logo</label>
+          <label class="check-item"><input type="checkbox" value="Print/screenshot"> Print/screenshot</label>
+          <label class="check-item"><input type="checkbox" value="Produto"> Produto</label>
+          <label class="check-item"><input type="checkbox" value="Imagem de fundo"> Imagem de fundo</label>
+          <label class="check-item"><input type="checkbox" value="Nenhum"> Nenhum</label>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-label">Observações adicionais</div>
+        <textarea id="thumbnail_observacoes" placeholder="Escreva qualquer detalhe importante para a criação da thumbnail..."></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num">6</div><span>Informações Finais</span></div>
+      <div class="question">
+        <div class="q-label">WhatsApp do cliente <span class="req">*</span></div>
+        <input type="tel" id="thumbnail_tel" placeholder="(81) 9 9999-9999">
+      </div>
+      <div class="question">
+        <div class="q-label">E-mail do cliente</div>
+        <input type="email" id="thumbnail_email_cliente" placeholder="email@email.com">
+      </div>
+    </div>
+
+    <div class="form-footer">
+      <button class="btn-submit" onclick="enviarBriefing('thumbnail')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('thumbnail')">Limpar formulário</button>
+    </div>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
+  </div>
+
   <!-- ═══════════ LOGO ═══════════ -->
-  <div id="panel-logo" class="panel active">
+  <div id="panel-logo" class="panel">
     <div class="form-header">
       <div class="brand-badge">✦ bielgraf</div>
       <h1>Briefing de Identidade Visual & Logo</h1>
@@ -99,7 +232,7 @@
       <button class="btn-submit" onclick="enviarBriefing('logo')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('logo')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34565d51585346555252745359555d581a575b59">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ FLYER ═══════════ -->
@@ -148,12 +281,13 @@
       </div>
       <div class="question"><div class="q-label">Observações extras</div><textarea id="flyer_obs" placeholder="Qualquer informação adicional..."></textarea></div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="flyer_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="flyer_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
       <button class="btn-submit" onclick="enviarBriefing('flyer')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('flyer')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef8d868a83889d8e8989af88828e8683c18c8082">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ BANNER ═══════════ -->
@@ -194,12 +328,13 @@
         </div>
       </div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="banner_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="banner_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
       <button class="btn-submit" onclick="enviarBriefing('banner')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('banner')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8fede6eae3e8fdeee9e9cfe8e2eee6e3a1ece0e2">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ STORY ═══════════ -->
@@ -249,12 +384,13 @@
       </div>
       <div class="question"><div class="q-label">Observações</div><textarea id="story_obs" placeholder="Qualquer detalhe..."></textarea></div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="story_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="story_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
       <button class="btn-submit" onclick="enviarBriefing('story')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('story')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e18388848d8693808787a1868c80888dcf828e8c">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ SOCIAL ═══════════ -->
@@ -289,12 +425,13 @@
       <div class="question"><div class="q-label">Data ideal para entrega</div><input type="text" id="social_prazo" placeholder="Ex: até sexta-feira (04/04)"></div>
       <div class="question"><div class="q-label">Observações</div><textarea id="social_obs" placeholder="Qualquer informação adicional..."></textarea></div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="social_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="social_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
       <button class="btn-submit" onclick="enviarBriefing('social')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('social')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e2808b878e8590838484a2858f838b8ecc818d8f">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ CARTÃO ═══════════ -->
@@ -340,12 +477,13 @@
         </div>
       </div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="card_tel" placeholder="(81) 9 9999-9999"></div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="card_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
       <button class="btn-submit" onclick="enviarBriefing('card')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
       <button class="btn-clear" onclick="limpar('card')">Limpar formulário</button>
     </div>
-    <p class="footer-note">✦ bielgraf • <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e1c171b12190c1f18183e19131f1712501d1113">[email&#160;protected]</a> • Este briefing é confidencial.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
 
   <!-- ═══════════ VÍDEO ═══════════ -->
@@ -399,114 +537,23 @@
       </div>
       <div class="question"><div class="q-label">Observações</div><textarea id="video_obs" placeholder="Qualquer detalhe importante..."></textarea></div>
       <div class="question"><div class="q-label">WhatsApp do cliente <span class="req">*</span></div><input type="tel" id="video_tel" placeholder="(81) 9 9999-9999"></div>
-      <!-- ═══════════ THUMBNAIL ═══════════ -->
-  <div id="panel-thumbnail" class="panel">
-    <div class="form-header">
-      <div class="brand-badge">✦ bielgraf</div>
-      <h1>Briefing de Thumbnail</h1>
-      <p>Preencha as informações abaixo para que eu crie uma thumbnail estratégica, chamativa e alinhada ao seu conteúdo.</p>
-    </div>
-    <div class="section">
-      <div class="section-header"><div class="section-num">1</div><span>Informações do Projeto</span></div>
-      <div class="question">
-        <div class="q-label">Qual é o título do vídeo ou conteúdo? <span class="req">*</span></div>
-        <input type="text" id="thumbnail_titulo_video" placeholder="Exemplo: Como ganhar dinheiro com design em 2026">
-      </div>
-      <div class="question">
-        <div class="q-label">Qual é o tema principal da thumbnail? <span class="req">*</span></div>
-        <input type="text" id="thumbnail_tema_video" placeholder="Exemplo: design, games, marketing, tutorial, vlog...">
-      </div>
-      <div class="question">
-        <div class="q-label">Descreva rapidamente o conteúdo do vídeo</div>
-        <textarea id="thumbnail_descricao_conteudo" placeholder="Explique sobre o que é o vídeo e o que será mostrado..."></textarea>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-header"><div class="section-num">2</div><span>Estilo Visual</span></div>
-      <div class="question">
-        <div class="q-label">Qual estilo visual você prefere?</div>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Chamativo e exagerado"> Chamativo e exagerado</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Profissional e limpo"> Profissional e limpo</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Dark e impactante"> Dark e impactante</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Colorido e moderno"> Colorido e moderno</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Minimalista"> Minimalista</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_estilo_visual" value="Outro"> Outro</label>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-label">Quais elementos você quer destacar na thumbnail?</div>
-        <div class="check-group" id="thumbnail_elementos_visuais_group">
-          <label class="check-item"><input type="checkbox" value="Rosto/pessoa"> Rosto/pessoa</label>
-          <label class="check-item"><input type="checkbox" value="Texto grande"> Texto grande</label>
-          <label class="check-item"><input type="checkbox" value="Produto/objeto"> Produto/objeto</label>
-          <label class="check-item"><input type="checkbox" value="Fundo com efeitos"> Fundo com efeitos</label>
-          <label class="check-item"><input type="checkbox" value="Setas/círculos"> Setas/círculos</label>
-          <label class="check-item"><input type="checkbox" value="Explosões/brilho"> Explosões/brilho</label>
-          <label class="check-item"><input type="checkbox" value="Logo da marca"> Logo da marca</label>
-          <label class="check-item"><input type="checkbox" value="Antes e depois"> Antes e depois</label>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-label">Quais cores você deseja usar?</div>
-        <input type="text" id="thumbnail_cores_preferidas" placeholder="Exemplo: amarelo, preto e branco">
-      </div>
-      <div class="question">
-        <div class="q-label">Tem alguma referência de thumbnail? Se sim, descreva ou envie.</div>
-        <textarea id="thumbnail_referencia_visual" placeholder="Exemplo: igual thumbnails do MrBeast, com rosto grande e texto forte..."></textarea>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-header"><div class="section-num">3</div><span>Textos e Mensagem</span></div>
-      <div class="question">
-        <div class="q-label">Qual texto deve aparecer na thumbnail? <span class="req">*</span></div>
-        <input type="text" id="thumbnail_texto_thumbnail" placeholder="Exemplo: NÃO COMPRE ISSO">
-      </div>
-      <div class="question">
-        <div class="q-label">Qual tom a thumbnail deve transmitir?</div>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Urgência"> Urgência</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Curiosidade"> Curiosidade</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Choque"> Choque</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Autoridade"> Autoridade</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Humor"> Humor</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tom_mensagem" value="Mistério"> Mistério</label>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-label">Existe alguma palavra que precisa ter mais destaque?</div>
-        <input type="text" id="thumbnail_palavras_importantes" placeholder="Exemplo: GRÁTIS, SEGREDO, ERRO, URGENTE...">
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-header"><div class="section-num">4</div><span>Arquivos e Preferências</span></div>
-      <div class="question">
-        <div class="q-label">Você vai enviar foto/imagem para usar?</div>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="thumbnail_tem_foto" value="Sim"> Sim</label>
-          <label class="radio-item"><input type="radio" name="thumbnail_tem_foto" value="Não"> Não</label>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-label">Quais arquivos ou materiais serão enviados?</div>
-        <div class="check-group" id="thumbnail_arquivos_adicionais_group">
-          <label class="check-item"><input type="checkbox" value="Foto da pessoa"> Foto da pessoa</label>
-          <label class="check-item"><input type="checkbox" value="Logo"> Logo</label>
-          <label class="check-item"><input type="checkbox" value="Print/screenshot"> Print/screenshot</label>
-          <label class="check-item"><input type="checkbox" value="Produto"> Produto</label>
-          <label class="check-item"><input type="checkbox" value="Imagem de fundo"> Imagem de fundo</label>
-          <label class="check-item"><input type="checkbox" value="Nenhum"> Nenhum</label>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-label">Observações adicionais</div>
-        <textarea id="thumbnail_observacoes" placeholder="Escreva qualquer detalhe importante para a criação da thumbnail..."></textarea>
-      </div>
+      <div class="question"><div class="q-label">E-mail do cliente</div><input type="email" id="video_email_cliente" placeholder="email@email.com"></div>
     </div>
     <div class="form-footer">
-      <button class="btn-submit" onclick="enviarBriefing('thumbnail')"><span class="btn-text">📨 Enviar briefing</span><span class="spinner"></span></button>
-      <button class="btn-clear" onclick="limpar('thumbnail')">Limpar</button>
+      <button class="btn-submit" onclick="enviarBriefing('video')"><span class="spinner"></span><span class="btn-text">📨 Enviar briefing</span></button>
+      <button class="btn-clear" onclick="limpar('video')">Limpar formulário</button>
     </div>
-    <p class="footer-note">Ao enviar, o briefing será entregue diretamente para a bielgraf. Entraremos em contato em breve.</p>
+    <p class="footer-note">✦ bielgraf • bielgraff@gmail.com • Este briefing é confidencial.</p>
   </div>
-    </
+
+</div><!-- fim .wrapper -->
+
+<!-- Toast de notificação -->
+<div id="toast" class="toast">
+  <strong id="toast-title"></strong>
+  <span id="toast-msg"></span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
