@@ -1,6 +1,7 @@
 const DEST = 'bielgraff@gmail.com';
 
 const nomes = {
+  thumbnail: 'Thumbnail',
   logo:'Logo / Identidade Visual', flyer:'Flyer',
   banner:'Banner', story:'Story',
   social:'Post para Redes Sociais', card:'Cartão de Visita', video:'Vídeo / Reels / Motion'
